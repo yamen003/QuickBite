@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import LogIn from './LogIn';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -35,7 +36,7 @@ function SignUp() {
       });
       console.log(res.data); 
       setLoading(false);
-      navigate('/Home.jsx');
+      navigate('/LogIn.jsx');
     } catch (err) {
       if (err.response && err.response.status === 400) {
         setError('Email already in use');

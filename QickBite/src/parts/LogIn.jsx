@@ -30,9 +30,9 @@ function LogIn() {
 
       console.log(res.data); // Handle successful login (e.g., store token, etc.)
       setLoading(false);
-
-      // Redirect to Home after successful login
-      navigate('/Home.jsx'); // Update this path to match your route
+      localStorage.setItem('token', res.data.token);
+        console.log('Login successful, token stored:', res.data.token);
+      navigate('/Home.jsx'); 
     } catch (err) {
       setLoading(false);
       if (err.response && err.response.status === 401) {

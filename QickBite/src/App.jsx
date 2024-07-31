@@ -11,6 +11,7 @@ function App() {
       <Routes location={location}>
         <Route path="/" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/LogIn.jsx" element={<LogIn />} />
         <Route path="/Home.jsx" element={<Home />} />
       </Routes>
     </PageTransition>
