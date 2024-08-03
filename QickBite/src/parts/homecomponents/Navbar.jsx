@@ -45,7 +45,7 @@ function Navbar() {
             <Link to="home" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>Home</Link>
 
             <Link to="dishes" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>Dishes</Link>
-            <Link to="about" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>About</Link>
+            <Link to="cart" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>Cart</Link>
             <Link to="menu" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>Menu</Link>
             <Link to="reviews" spy="true" smooth={true} duration={500} className='hover:text-orange-500 transition-all cursor-pointer'>Reviews</Link>
             <Link to="profile" className='text-orange-500 hover:text-black transition-all cursor-pointer'>Welcome, {username}</Link>

@@ -3,6 +3,7 @@ import './index.css'
 import { LogIn,SignUp,Home } from './parts'
 import { BrowserRouter as Router, Route, Routes ,useLocation } from 'react-router-dom';
 import PageTransition from './PageTransition';
+import Dishes from "./parts/homecomponents/Dishes";
 function App() {
   const location = useLocation();
 

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
 
 function LogIn() {
   const [formData, setFormData] = useState({
@@ -11,8 +12,22 @@ function LogIn() {
   const [loading, setLoading] = useState(false);
 
   const { email, password } = formData;
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+        if (decoded.exp > currentTime) {
+          navigate('/Home.jsx'); // Redirect to home page or dashboard
+        }
+      } catch (error) {
+        console.error('Token invalid:', error);
+        localStorage.removeItem('token');
+      }
+    }
+  }, [navigate]);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError('');
