@@ -101,7 +101,7 @@ function LogIn() {
           </div>
           <br />
           <div>
-            <h2 className="text-left">No Account? <Link to="/signup" className="text-[#E56F0B]">Click Here</Link></h2>
+            <h2 className="text-left">No Account? <Link to="/SignUp" className="text-[#E56F0B]">Click Here</Link></h2>
           </div>
         </form>
       </div>

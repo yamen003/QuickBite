@@ -12,7 +12,15 @@ const ItemSchema = new Schema({
   password: {
     type: String,
     required: true
-  }
+  },
+  cart: [
+    {
+      img: String,
+      title: String,
+      price: String,
+      quantity: { type: Number, default: 1 }
+    }
+  ]
 });
 
 // eslint-disable-next-line no-undef

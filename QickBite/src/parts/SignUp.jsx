@@ -15,19 +15,41 @@ function SignUp() {
 
   const { name, email, password, confirmPassword } = formData;
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError('');
   };
 
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validatePassword = (password) => {
+    const re = /^(?=.*[0-9])(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    return re.test(password);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateEmail(email)) {
+      setError('Invalid email address');
+      return;
+    }
+
+    if (!validatePassword(password)) {
+      setError('Password must be at least 8 characters long and /n contain at least one number and one special character');
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
+    setLoading(true);
     try {
       const res = await axios.post('http://localhost:5000/api/signup', {
         name,
@@ -36,8 +58,9 @@ function SignUp() {
       });
       console.log(res.data); 
       setLoading(false);
-      navigate('/LogIn.jsx');
+      navigate('/LogIn');
     } catch (err) {
+      setLoading(false);
       if (err.response && err.response.status === 400) {
         setError('Email already in use');
       } else {
@@ -91,8 +114,9 @@ function SignUp() {
           <button
             type="submit"
             className="block w-[150px] bg-[#E56F0B] mt-5 items-center text-white py-3 rounded-lg font-semibold hover:bg-[#d55f0a] transition duration-200 ease-in-out"
+            disabled={loading}
           >
-            Sign Up
+            {loading ? 'Signing Up...' : 'Sign Up'}
           </button>
         </form>
       </div>
